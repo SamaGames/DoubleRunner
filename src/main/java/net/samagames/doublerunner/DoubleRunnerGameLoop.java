@@ -37,13 +37,6 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     }
 
     @Override
-    public void createReducingEvent()
-    {
-        super.createReducingEvent();
-        this.fallDamages = true;
-    }
-
-    @Override
     public void createDeathmatchEvent()
     {
         this.game.getWorldBorder().setSize(10.0D, 6L * 60L);
@@ -58,6 +51,15 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
 
             this.createReducingEvent();
         });
+    }
+
+    @Override
+    public void createReducingEvent()
+    {
+        super.createReducingEvent();
+        this.nextEvent = this.nextEvent.copy(5, 30);
+
+        this.fallDamages = true;
     }
 
     @EventHandler

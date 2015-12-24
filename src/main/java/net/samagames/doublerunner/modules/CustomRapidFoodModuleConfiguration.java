@@ -24,8 +24,13 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
         this.addDrop(EntityType.SHEEP, (drops, random) ->
         {
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.MUTTON).map(stack -> new ItemStack(Material.COOKED_MUTTON, stack.getAmount() * 2)).collect(Collectors.toList());
-            newDrops.add(new ItemStack(Material.BOW, 1));
-            newDrops.add(new ItemStack(Material.BOOK, random.nextInt(2) + 1));
+
+            int randomized = random.nextInt(100);
+
+            if (randomized < 30)
+                newDrops.add(new ItemStack(Material.BOW, 1));
+            else if (randomized < 50)
+                newDrops.add(new ItemStack(Material.BOOK, 1));
 
             return newDrops;
         }, true);
@@ -33,10 +38,13 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
         this.addDrop(EntityType.COW, (drops, random) ->
         {
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.RAW_BEEF).map(stack -> new ItemStack(Material.COOKED_BEEF, stack.getAmount() * 2)).collect(Collectors.toList());
-            newDrops.add(new ItemStack(Material.BOOK, random.nextInt(2) + 1));
 
-            if (random.nextInt(100) < 30)
+            int randomized = random.nextInt(100);
+
+            if (randomized < 5)
                 newDrops.add(new ItemStack(Material.MILK_BUCKET, 1));
+            else if (randomized < 50)
+                newDrops.add(new ItemStack(Material.BOOK, 1));
 
             return newDrops;
         }, true);
@@ -44,7 +52,9 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
         this.addDrop(EntityType.PIG, (drops, random) ->
         {
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.PORK).map(stack -> new ItemStack(Material.GRILLED_PORK, stack.getAmount() * 2)).collect(Collectors.toList());
-            newDrops.add(new ItemStack(Material.BOOK, random.nextInt(2) + 1));
+
+            if (random.nextInt(100) < 50)
+                newDrops.add(new ItemStack(Material.BOOK, 1));
 
             return newDrops;
         }, true);
@@ -83,7 +93,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             List<ItemStack> newDrops = new ArrayList<>();
             newDrops.add(new ItemStack(Material.COOKED_MUTTON, random.nextInt(2) + 1));
 
-            if (random.nextInt(100) < 30)
+            if (random.nextInt(100) < 15)
                 newDrops.add(new Potion(PotionType.NIGHT_VISION).toItemStack(1));
 
             return newDrops;
@@ -91,20 +101,14 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
 
         this.addDrop(EntityType.SKELETON, (drops, random) ->
         {
-            List<ItemStack> newDrops = new ArrayList<>();
+            List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.ARROW).map(stack -> new ItemStack(Material.ARROW, stack.getAmount() * 2)).collect(Collectors.toList());
 
-            for (ItemStack stack : drops)
+            if (random.nextInt(100) < 15)
             {
-                if (stack.getType() == Material.ARROW)
-                {
-                    newDrops.add(new ItemStack(Material.ARROW, stack.getAmount() * 2));
-                }
-                if (stack.getType() == Material.BOW)
-                {
-                    stack.setDurability((short) 0);
-                    stack.addEnchantment(Enchantment.ARROW_DAMAGE, 1);
-                    newDrops.add(stack);
-                }
+                ItemStack bow = new ItemStack(Material.BOW, 1);
+                bow.addEnchantment(Enchantment.ARROW_DAMAGE, 1);
+
+                newDrops.add(bow);
             }
 
             return newDrops;
@@ -112,9 +116,9 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
 
         this.addDrop(EntityType.SPIDER, (drops, random) ->
         {
-            if (random.nextInt(100) < 20)
+            if (random.nextInt(100) < 15)
             {
-                Potion potion = new Potion(PotionType.POISON, 1);
+                Potion potion = new Potion(PotionType.POISON, 1).splash();
                 ItemStack stack = potion.toItemStack(1);
 
                 PotionMeta meta = (PotionMeta) stack.getItemMeta();
@@ -131,12 +135,12 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
 
         this.addDrop(EntityType.ZOMBIE, (drops, random) ->
         {
-            if (random.nextInt(100) < 15)
-            {
-                drops.add(new Potion(PotionType.STRENGTH).toItemStack(1));
-            }
+            List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.ROTTEN_FLESH).map(stack -> new ItemStack(Material.COOKED_BEEF, stack.getAmount() * 2)).collect(Collectors.toList());
 
-            return drops;
+            if (random.nextInt(100) < 15)
+                newDrops.add(new Potion(PotionType.STRENGTH).toItemStack(1));
+
+            return newDrops;
         }, true);
     }
 }

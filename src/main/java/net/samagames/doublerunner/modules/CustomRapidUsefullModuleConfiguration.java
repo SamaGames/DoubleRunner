@@ -19,8 +19,10 @@ public class CustomRapidUsefullModuleConfiguration extends RapidUsefullModule.Co
 
             if (randomized < 5)
                 return new ItemStack(Material.ENCHANTMENT_TABLE, 1);
-            else
+            else if (randomized < 15)
                 return new Potion(PotionType.SPEED).toItemStack(1);
+            else
+                return base;
         }, true);
 
         this.addDrop(new ItemStack(Material.GRAVEL, 1), (base, random) ->
@@ -30,5 +32,15 @@ public class CustomRapidUsefullModuleConfiguration extends RapidUsefullModule.Co
             else
                 return new ItemStack(Material.ARROW, 16);
         }, true);
+
+        this.addDrop(new ItemStack(Material.FLINT, 1), (base, random) ->
+        {
+            if (random.nextInt(100) < 20)
+                return new ItemStack(Material.FLINT_AND_STEEL, 1);
+            else
+                return new ItemStack(Material.ARROW, 16);
+        }, true);
+
+        this.addDrop(new ItemStack(Material.SAND, 1), (base, random) -> new ItemStack(Material.SAND, 1), true);
     }
 }

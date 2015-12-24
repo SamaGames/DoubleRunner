@@ -1,0 +1,8 @@
+name: DoubleRunner
+main: net.samagames.doublerunner.DoubleRunner
+version: 1.0
+
+depend: [SamaGamesAPI, SurvivalAPI]
+
+author: BlueSlime
+website: http://samagames.net/

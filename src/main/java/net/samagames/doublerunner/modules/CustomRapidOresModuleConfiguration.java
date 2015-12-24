@@ -30,6 +30,21 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
             }
         }, true);
 
+        this.addDrop(new ItemStack(Material.DIAMOND), new IRapidOresHook()
+        {
+            @Override
+            public ItemStack getDrop(ItemStack base, Random random)
+            {
+                return new ItemStack(Material.DIAMOND, 4);
+            }
+
+            @Override
+            public int getExperienceModifier(Random random)
+            {
+                return MathHelper.nextInt(random, 5, 7);
+            }
+        }, true);
+
         this.addDrop(new ItemStack(Material.QUARTZ_BLOCK, 1), new IRapidOresHook()
         {
             @Override

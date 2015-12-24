@@ -19,6 +19,7 @@ import net.samagames.survivalapi.modules.gameplay.AutomaticLapisModule;
 import net.samagames.survivalapi.modules.gameplay.ConstantPotionModule;
 import net.samagames.survivalapi.modules.gameplay.RapidFoodModule;
 import net.samagames.survivalapi.modules.gameplay.RapidUsefullModule;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -62,7 +63,7 @@ public class DoubleRunner extends JavaPlugin
         int nb = SamaGamesAPI.get().getGameManager().getGameProperties().getOption("playersPerTeam", new JsonPrimitive(1)).getAsInt();
 
         if (nb > 1)
-            game = new RunBasedTeamGame<>(this, "doublerunner", "DoubleRunner", "Un Repas, un Café, un DoubleRunner !", "☕", DoubleRunnerGameLoop.class, nb);
+            game = new RunBasedTeamGame<>(this, "doublerunner", "DoubleRunner", "Un Repas, un Café, un DoubleRunner !", ChatColor.DARK_PURPLE + "☕", DoubleRunnerGameLoop.class, nb);
         else
             game = new RunBasedSoloGame<>(this, "doublerunner", "DoubleRunner", "Un Repas, un Café, un DoubleRunner !", "☕", DoubleRunnerGameLoop.class);
 

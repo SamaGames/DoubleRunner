@@ -1,6 +1,7 @@
 package net.samagames.doublerunner.modules;
 
 import net.samagames.survivalapi.modules.gameplay.RapidUsefullModule;
+import net.samagames.survivalapi.utils.Meta;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.Potion;
@@ -19,10 +20,10 @@ public class CustomRapidUsefullModuleConfiguration extends RapidUsefullModule.Co
 
             if (randomized < 5)
                 return new ItemStack(Material.ENCHANTMENT_TABLE, 1);
-            else if (randomized < 15)
-                return new Potion(PotionType.SPEED).toItemStack(1);
+            else if (randomized < 25)
+                return Meta.addMeta(new Potion(PotionType.SPEED).extend().toItemStack(1));
             else
-                return base;
+                return new ItemStack(Material.BOOK, 1);
         }, true);
 
         this.addDrop(new ItemStack(Material.GRAVEL, 1), (base, random) ->

@@ -1,6 +1,7 @@
 package net.samagames.doublerunner.modules;
 
 import net.samagames.survivalapi.modules.gameplay.RapidFoodModule;
+import net.samagames.survivalapi.utils.Meta;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
@@ -83,7 +84,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.RABBIT).map(stack -> new ItemStack(Material.COOKED_RABBIT, stack.getAmount() * 2)).collect(Collectors.toList());
 
             if (random.nextInt(100) < 30)
-                newDrops.add(new Potion(PotionType.JUMP).toItemStack(1));
+                newDrops.add(Meta.addMeta(new Potion(PotionType.JUMP).extend().toItemStack(1)));
 
             return newDrops;
         }, true);
@@ -94,7 +95,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             newDrops.add(new ItemStack(Material.COOKED_MUTTON, random.nextInt(2) + 1));
 
             if (random.nextInt(100) < 15)
-                newDrops.add(new Potion(PotionType.NIGHT_VISION).toItemStack(1));
+                newDrops.add(Meta.addMeta(new Potion(PotionType.NIGHT_VISION).extend().toItemStack(1)));
 
             return newDrops;
         }, true);
@@ -118,7 +119,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
         {
             if (random.nextInt(100) < 15)
             {
-                Potion potion = new Potion(PotionType.POISON, 1).splash();
+                Potion potion = new Potion(PotionType.POISON, 1).extend().splash();
                 ItemStack stack = potion.toItemStack(1);
 
                 PotionMeta meta = (PotionMeta) stack.getItemMeta();
@@ -127,7 +128,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
 
                 stack.setItemMeta(meta);
 
-                drops.add(stack);
+                drops.add(Meta.addMeta(stack));
             }
 
             return drops;
@@ -138,7 +139,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.ROTTEN_FLESH).map(stack -> new ItemStack(Material.COOKED_BEEF, stack.getAmount() * 2)).collect(Collectors.toList());
 
             if (random.nextInt(100) < 15)
-                newDrops.add(new Potion(PotionType.STRENGTH).toItemStack(1));
+                newDrops.add(Meta.addMeta(new Potion(PotionType.STRENGTH).extend().toItemStack(1)));
 
             return newDrops;
         }, true);

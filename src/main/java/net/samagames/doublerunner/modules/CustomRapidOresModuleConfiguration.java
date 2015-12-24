@@ -15,6 +15,21 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
     {
         this.addDefaults();
 
+        this.addDrop(new ItemStack(Material.COAL), new IRapidOresHook()
+        {
+            @Override
+            public ItemStack getDrop(ItemStack base, Random random)
+            {
+                return new ItemStack(Material.TORCH, 6);
+            }
+
+            @Override
+            public int getExperienceModifier(Random random)
+            {
+                return MathHelper.nextInt(random, 2, 5);
+            }
+        }, true);
+
         this.addDrop(new ItemStack(Material.IRON_ORE), new IRapidOresHook()
         {
             @Override
@@ -26,7 +41,7 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
             @Override
             public int getExperienceModifier(Random random)
             {
-                return MathHelper.nextInt(random, 0, 2);
+                return MathHelper.nextInt(random, 2, 5);
             }
         }, true);
 
@@ -53,17 +68,17 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
                 int randomized = random.nextInt(100);
 
                 if (randomized < 25)
-                    return new Potion(PotionType.STRENGTH).toItemStack(1);
+                    return new Potion(PotionType.STRENGTH).extend().toItemStack(1);
                 else if (randomized < 40)
-                    return new Potion(PotionType.SPEED).toItemStack(1);
+                    return new Potion(PotionType.SPEED).extend().toItemStack(1);
                 else if (randomized < 55)
-                    return new Potion(PotionType.FIRE_RESISTANCE).toItemStack(1);
+                    return new Potion(PotionType.FIRE_RESISTANCE).extend().toItemStack(1);
                 else if (randomized < 70)
-                    return new Potion(PotionType.JUMP).toItemStack(1);
+                    return new Potion(PotionType.JUMP).extend().toItemStack(1);
                 else if (randomized < 85)
-                    return new Potion(PotionType.NIGHT_VISION).toItemStack(1);
+                    return new Potion(PotionType.NIGHT_VISION).extend().toItemStack(1);
                 else
-                    return new Potion(PotionType.POISON).toItemStack(1);
+                    return new Potion(PotionType.POISON).extend().splash().toItemStack(1);
             }
 
             @Override

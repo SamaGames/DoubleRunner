@@ -65,11 +65,11 @@ public class DoubleRunner extends JavaPlugin
         if (nb > 1)
             game = new RunBasedTeamGame<>(this, "doublerunner", "DoubleRunner", "Un Repas, un Café, un DoubleRunner !", ChatColor.DARK_PURPLE + "☕", DoubleRunnerGameLoop.class, nb);
         else
-            game = new RunBasedSoloGame<>(this, "doublerunner", "DoubleRunner", "Un Repas, un Café, un DoubleRunner !", "☕", DoubleRunnerGameLoop.class);
+            game = new RunBasedSoloGame<>(this, "doublerunner", "DoubleRunner", "Un Repas, un Café, un DoubleRunner !", ChatColor.DARK_PURPLE + "☕", DoubleRunnerGameLoop.class);
 
         SurvivalAPI.get().unloadModule(RandomChestModule.class);
 
-        SamaGamesAPI.get().getGameManager().setMaxReconnectTime(20);
+        SamaGamesAPI.get().getGameManager().setMaxReconnectTime(10);
         SamaGamesAPI.get().getGameManager().registerGame(game);
     }
 }

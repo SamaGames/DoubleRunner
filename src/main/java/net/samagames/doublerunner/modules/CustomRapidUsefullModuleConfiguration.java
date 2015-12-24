@@ -3,7 +3,9 @@ package net.samagames.doublerunner.modules;
 import net.samagames.survivalapi.modules.gameplay.RapidUsefullModule;
 import net.samagames.survivalapi.utils.Meta;
 import org.bukkit.Material;
+import org.bukkit.TreeSpecies;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.Tree;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 

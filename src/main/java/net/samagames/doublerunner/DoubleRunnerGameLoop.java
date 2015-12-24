@@ -23,6 +23,8 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
         super(plugin, server, game);
 
         this.fallDamages = false;
+
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @Override

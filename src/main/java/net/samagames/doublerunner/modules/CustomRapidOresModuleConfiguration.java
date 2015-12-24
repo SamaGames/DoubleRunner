@@ -15,6 +15,51 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
     {
         this.addDefaults();
 
+        this.addDrop(new ItemStack(Material.IRON_ORE), new IRapidOresHook()
+        {
+            @Override
+            public ItemStack getDrop(ItemStack base, Random random)
+            {
+                return new ItemStack(Material.IRON_INGOT, 6);
+            }
+
+            @Override
+            public int getExperienceModifier(Random random)
+            {
+                return MathHelper.nextInt(random, 0, 2);
+            }
+        }, true);
+
+        this.addDrop(new ItemStack(Material.DIAMOND), new IRapidOresHook()
+        {
+            @Override
+            public ItemStack getDrop(ItemStack base, Random random)
+            {
+                return new ItemStack(Material.DIAMOND, 6);
+            }
+
+            @Override
+            public int getExperienceModifier(Random random)
+            {
+                return MathHelper.nextInt(random, 3, 7);
+            }
+        }, true);
+
+        this.addDrop(new ItemStack(Material.EMERALD), new IRapidOresHook()
+        {
+            @Override
+            public ItemStack getDrop(ItemStack base, Random random)
+            {
+                return new ItemStack(Material.EMERALD, 6);
+            }
+
+            @Override
+            public int getExperienceModifier(Random random)
+            {
+                return MathHelper.nextInt(random, 3, 7);
+            }
+        }, true);
+
         this.addDrop(new ItemStack(Material.QUARTZ_BLOCK, 1), new IRapidOresHook()
         {
             @Override

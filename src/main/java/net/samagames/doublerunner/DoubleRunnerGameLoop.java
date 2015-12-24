@@ -2,6 +2,8 @@ package net.samagames.doublerunner;
 
 import net.samagames.survivalapi.game.SurvivalGame;
 import net.samagames.survivalapi.game.types.run.RunBasedGameLoop;
+import net.samagames.survivalapi.utils.TimedEvent;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.enchantments.Enchantment;
@@ -39,6 +41,23 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     {
         super.createReducingEvent();
         this.fallDamages = true;
+    }
+
+    @Override
+    public void createDeathmatchEvent()
+    {
+        this.game.getWorldBorder().setSize(10.0D, 6L * 60L);
+
+        this.nextEvent = new TimedEvent(0, 30, "PvP activé", ChatColor.RED, false, () ->
+        {
+            this.game.enableDamages();
+            this.game.enablePVP();
+
+            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("Les dégats et le PvP sont maintenant activés. Bonne chance !", true);
+            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("La map est maintenant en réduction constante pendant les 6 prochaines minutes.", true);
+
+            this.createReducingEvent();
+        });
     }
 
     @EventHandler

@@ -63,7 +63,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
         this.addDrop(EntityType.CHICKEN, (drops, random) ->
         {
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.RAW_CHICKEN).map(stack -> new ItemStack(Material.COOKED_CHICKEN, stack.getAmount() * 2)).collect(Collectors.toList());
-            newDrops.add(new ItemStack(Material.ARROW, 16));
+            newDrops.add(new ItemStack(Material.ARROW, 8));
 
             return newDrops;
         }, true);
@@ -124,7 +124,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
 
                 PotionMeta meta = (PotionMeta) stack.getItemMeta();
                 meta.clearCustomEffects();
-                meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 5 * 20, 0), true);
+                meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 10 * 20, 0), true);
 
                 stack.setItemMeta(meta);
 

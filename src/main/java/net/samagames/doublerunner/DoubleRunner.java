@@ -48,7 +48,7 @@ public class DoubleRunner extends JavaPlugin
 
         WorldDropModule.ConfigurationBuilder worldDropConfiguration = new WorldDropModule.ConfigurationBuilder();
         worldDropConfiguration.addCustomDrop(Material.OBSIDIAN, new ItemStack(Material.OBSIDIAN, 4));
-        worldDropConfiguration.addCustomDrop(Material.APPLE, new ItemStack(Material.GOLDEN_APPLE, 1));
+        worldDropConfiguration.addCustomDrop(Material.APPLE, new ItemStack(Material.GOLDEN_APPLE, 2));
 
         SurvivalAPI.get().loadModule(WorldDropModule.class, worldDropConfiguration.build());
 

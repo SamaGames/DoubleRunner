@@ -30,6 +30,17 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     }
 
     @Override
+    public void createDamageEvent() {
+        this.nextEvent = new TimedEvent(1, 0, "Dégats actifs", ChatColor.GREEN, false, () ->
+        {
+            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("Les dégats sont désormais actifs.", true);
+            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("Le map sera réduite dans 9 minutes. Le PvP sera activé à ce moment là.", true);
+            this.game.enableDamages();
+            this.createTeleportationEvent();
+        });
+    }
+
+    @Override
     public void createTeleportationEvent()
     {
         super.createTeleportationEvent();

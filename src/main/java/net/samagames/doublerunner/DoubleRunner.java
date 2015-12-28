@@ -56,7 +56,6 @@ public class DoubleRunner extends JavaPlugin
         SurvivalAPI.get().loadModule(ConstantPotionModule.class, constantPotionConfiguration.build());
         SurvivalAPI.get().loadModule(OneShootPassiveModule.class, null);
         SurvivalAPI.get().loadModule(AutomaticLapisModule.class, null);
-        SurvivalAPI.get().loadModule(MilkBucketOnlyOnAgressivesModule.class, null);
 
         int nb = SamaGamesAPI.get().getGameManager().getGameProperties().getOption("playersPerTeam", new JsonPrimitive(1)).getAsInt();
 

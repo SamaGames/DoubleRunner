@@ -124,7 +124,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
 
                 PotionMeta meta = (PotionMeta) stack.getItemMeta();
                 meta.clearCustomEffects();
-                meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 6 * 20, 0), true);
+                meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 10, 0), true);
 
                 stack.setItemMeta(meta);
 

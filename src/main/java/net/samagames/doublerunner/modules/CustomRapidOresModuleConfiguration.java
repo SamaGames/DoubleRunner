@@ -4,7 +4,10 @@ import net.minecraft.server.v1_8_R3.MathHelper;
 import net.samagames.survivalapi.modules.block.RapidOresModule;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
 import java.util.Random;
@@ -78,7 +81,18 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
                 else if (randomized < 85)
                     return new Potion(PotionType.NIGHT_VISION).extend().toItemStack(1);
                 else
-                    return new Potion(PotionType.POISON).extend().splash().toItemStack(1);
+                {
+                    Potion potion = new Potion(PotionType.POISON, 1).extend().splash();
+                    ItemStack stack = potion.toItemStack(1);
+
+                    PotionMeta meta = (PotionMeta) stack.getItemMeta();
+                    meta.clearCustomEffects();
+                    meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 10, 0), true);
+
+                    stack.setItemMeta(meta);
+
+                    return stack;
+                }
             }
 
             @Override

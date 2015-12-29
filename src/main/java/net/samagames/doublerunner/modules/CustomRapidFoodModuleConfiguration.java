@@ -119,10 +119,11 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
         {
             if (random.nextInt(100) < 15)
             {
-                Potion potion = new Potion(PotionType.POISON, 1).extend().splash();
+                Potion potion = new Potion(PotionType.WATER, 1).splash();
                 ItemStack stack = potion.toItemStack(1);
 
                 PotionMeta meta = (PotionMeta) stack.getItemMeta();
+                meta.setMainEffect(PotionEffectType.POISON);
                 meta.clearCustomEffects();
                 meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 10, 0), true);
 

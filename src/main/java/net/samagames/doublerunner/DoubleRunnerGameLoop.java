@@ -78,11 +78,18 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     }
 
     @EventHandler
-    public void onPlayerInter(PlayerInteractEvent event)
+    public void onPlayerInteract(PlayerInteractEvent event)
     {
         if (event.getItem() != null && event.getItem().getType() == Material.POTION && Potion.fromItemStack(event.getItem()).getType() == PotionType.POISON)
+        {
             if (!this.game.isPvPActivated())
+            {
+                event.getPlayer().sendMessage(ChatColor.RED + "Vous ne pouvez pas utiliser cet objet hors du PvP.");
+
                 event.setCancelled(true);
+                event.getPlayer().updateInventory();
+            }
+        }
     }
 
     @EventHandler

@@ -12,9 +12,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.*;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EnchantingInventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionType;
 
 public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
 {
@@ -30,7 +33,8 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     }
 
     @Override
-    public void createDamageEvent() {
+    public void createDamageEvent()
+    {
         this.nextEvent = new TimedEvent(1, 0, "Dégats actifs", ChatColor.GREEN, false, () ->
         {
             this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("Les dégats sont désormais actifs.", true);
@@ -50,7 +54,7 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     @Override
     public void createDeathmatchEvent()
     {
-        this.game.getWorldBorder().setSize(10.0D, 6L * 60L);
+        this.game.getWorldBorder().setSize(25.0D, 6L * 60L);
 
         this.nextEvent = new TimedEvent(0, 30, "PvP activé", ChatColor.RED, false, () ->
         {
@@ -71,6 +75,14 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
         this.nextEvent = this.nextEvent.copy(5, 30);
 
         this.fallDamages = true;
+    }
+
+    @EventHandler
+    public void onPlayerInter(PlayerInteractEvent event)
+    {
+        if (event.getItem() != null && event.getItem().getType() == Material.POTION && Potion.fromItemStack(event.getItem()).getType() == PotionType.POISON)
+            if (!this.game.isPvPActivated())
+                event.setCancelled(true);
     }
 
     @EventHandler

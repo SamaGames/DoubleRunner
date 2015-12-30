@@ -136,8 +136,9 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
         if (actual != null)
         {
             this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("changing effect", true);
-            event.getPotion().getEffects().remove(actual);
-            event.getPotion().getEffects().add(new PotionEffect(PotionEffectType.POISON, 5 * 20, 0));
+
+            event.setCancelled(true);
+            event.getAffectedEntities().forEach(entity -> entity.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 3 * 20, 0)));
         }
     }
 }

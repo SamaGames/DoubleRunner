@@ -82,7 +82,7 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
                 else if (randomized < 85)
                     return new Potion(PotionType.NIGHT_VISION).extend().toItemStack(1);
                 else
-                    return new Potion(PotionType.POISON, 2).toItemStack(1);
+                    return new Potion(PotionType.POISON, 2).splash().toItemStack(1);
             }
 
             @Override

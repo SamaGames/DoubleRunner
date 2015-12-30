@@ -116,23 +116,15 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     @EventHandler
     public void onPotionSplash(PotionSplashEvent event)
     {
-        boolean is = false;
-
         for (PotionEffect potionEffect : event.getPotion().getEffects())
         {
             if (potionEffect.getType() == PotionEffectType.POISON)
             {
-                is = true;
+                event.getPotion().getEffects().remove(potionEffect);
+                event.getPotion().getEffects().add(new PotionEffect(PotionEffectType.POISON, 5 * 20, 0));
+
                 break;
             }
-        }
-
-        if (is)
-        {
-            PotionEffect newPoison = new PotionEffect(PotionEffectType.POISON, 5 * 20, 0);
-
-            event.setCancelled(true);
-            event.getAffectedEntities().forEach(entity -> entity.addPotionEffect(newPoison));
         }
     }
 }

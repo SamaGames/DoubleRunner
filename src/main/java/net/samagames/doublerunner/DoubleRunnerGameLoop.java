@@ -11,12 +11,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.PotionSplashEvent;
 import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.EnchantingInventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
 public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
@@ -108,6 +110,29 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
             pickaxe.addEnchantment(Enchantment.DIG_SPEED, 3);
 
             event.getInventory().setResult(pickaxe);
+        }
+    }
+
+    @EventHandler
+    public void onPotionSplash(PotionSplashEvent event)
+    {
+        boolean is = false;
+
+        for (PotionEffect potionEffect : event.getPotion().getEffects())
+        {
+            if (potionEffect.getType() == PotionEffectType.POISON)
+            {
+                is = true;
+                break;
+            }
+        }
+
+        if (is)
+        {
+            PotionEffect newPoison = new PotionEffect(PotionEffectType.POISON, 5 * 20, 0);
+
+            event.setCancelled(true);
+            event.getAffectedEntities().forEach(entity -> entity.addPotionEffect(newPoison));
         }
     }
 }

@@ -125,7 +125,7 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
         {
             this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("effect: " + potionEffect.getType().getName(), true);
 
-            if (potionEffect.getType() == PotionEffectType.POISON)
+            if (potionEffect.getType().getName().equals("POISON"))
             {
                 this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("poison detected", true);
                 actual = potionEffect;

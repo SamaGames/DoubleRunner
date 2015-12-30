@@ -87,7 +87,7 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
 
                     PotionMeta meta = (PotionMeta) stack.getItemMeta();
                     meta.clearCustomEffects();
-                    meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 8 * 20, 0), true);
+                    meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 3 * 20, 0), true);
 
                     stack.setItemMeta(meta);
 

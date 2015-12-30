@@ -54,8 +54,6 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     @Override
     public void createDeathmatchEvent()
     {
-        this.game.getWorldBorder().setSize(25.0D, 6L * 60L);
-
         this.nextEvent = new TimedEvent(0, 30, "PvP activé", ChatColor.RED, false, () ->
         {
             this.game.enableDamages();

@@ -117,17 +117,12 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     @EventHandler
     public void onPotionSplash(PotionSplashEvent event)
     {
-        this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("potion", true);
-
         PotionEffect actual = null;
 
         for (PotionEffect potionEffect : event.getPotion().getEffects())
         {
-            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("effect: " + potionEffect.getType().getName(), true);
-
             if (potionEffect.getType().getName().equals("POISON"))
             {
-                this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("poison detected", true);
                 actual = potionEffect;
                 break;
             }
@@ -135,10 +130,8 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
 
         if (actual != null)
         {
-            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("changing effect", true);
-
             event.setCancelled(true);
-            event.getAffectedEntities().forEach(entity -> entity.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 3 * 20, 0)));
+            event.getAffectedEntities().forEach(entity -> entity.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 8 * 20, 0)));
         }
     }
 }

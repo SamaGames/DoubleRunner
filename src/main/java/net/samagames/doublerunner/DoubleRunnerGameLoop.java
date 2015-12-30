@@ -3,6 +3,7 @@ package net.samagames.doublerunner;
 import net.samagames.survivalapi.game.SurvivalGame;
 import net.samagames.survivalapi.game.types.run.RunBasedGameLoop;
 import net.samagames.survivalapi.utils.TimedEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Server;
@@ -56,7 +57,7 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     @Override
     public void createDeathmatchEvent()
     {
-        this.game.getWorldBorder().setSize(30.0D, 6L * 60L);
+        this.game.getWorldBorder().setSize(50.0D, 6L * 60L);
 
         this.nextEvent = new TimedEvent(0, 30, "PvP activé", ChatColor.RED, false, () ->
         {
@@ -116,15 +117,27 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     @EventHandler
     public void onPotionSplash(PotionSplashEvent event)
     {
+        Bukkit.broadcastMessage("potion");
+
+        PotionEffect actual = null;
+
         for (PotionEffect potionEffect : event.getPotion().getEffects())
         {
+            Bukkit.broadcastMessage("effect: " + potionEffect.getType().getName());
+
             if (potionEffect.getType() == PotionEffectType.POISON)
             {
-                event.getPotion().getEffects().remove(potionEffect);
-                event.getPotion().getEffects().add(new PotionEffect(PotionEffectType.POISON, 5 * 20, 0));
-
+                Bukkit.broadcastMessage("poison detected");
+                actual = potionEffect;
                 break;
             }
+        }
+
+        if (actual != null)
+        {
+            Bukkit.broadcastMessage("changing effect");
+            event.getPotion().getEffects().remove(actual);
+            event.getPotion().getEffects().add(new PotionEffect(PotionEffectType.POISON, 5 * 20, 0));
         }
     }
 }

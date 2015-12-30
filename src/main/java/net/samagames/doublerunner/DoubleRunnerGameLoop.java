@@ -117,17 +117,17 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     @EventHandler
     public void onPotionSplash(PotionSplashEvent event)
     {
-        Bukkit.broadcastMessage("potion");
+        this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("potion", true);
 
         PotionEffect actual = null;
 
         for (PotionEffect potionEffect : event.getPotion().getEffects())
         {
-            Bukkit.broadcastMessage("effect: " + potionEffect.getType().getName());
+            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("effect: " + potionEffect.getType().getName(), true);
 
             if (potionEffect.getType() == PotionEffectType.POISON)
             {
-                Bukkit.broadcastMessage("poison detected");
+                this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("poison detected", true);
                 actual = potionEffect;
                 break;
             }
@@ -135,7 +135,7 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
 
         if (actual != null)
         {
-            Bukkit.broadcastMessage("changing effect");
+            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("changing effect", true);
             event.getPotion().getEffects().remove(actual);
             event.getPotion().getEffects().add(new PotionEffect(PotionEffectType.POISON, 5 * 20, 0));
         }

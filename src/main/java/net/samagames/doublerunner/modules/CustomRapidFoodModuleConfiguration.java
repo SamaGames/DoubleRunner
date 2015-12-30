@@ -118,18 +118,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
         this.addDrop(EntityType.SPIDER, (drops, random) ->
         {
             if (random.nextInt(100) < 15)
-            {
-                Potion potion = new Potion(PotionType.POISON, 1).splash();
-                ItemStack stack = potion.toItemStack(1);
-
-                PotionMeta meta = (PotionMeta) stack.getItemMeta();
-                meta.clearCustomEffects();
-                meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 3 * 20, 0), true);
-
-                stack.setItemMeta(meta);
-
-                drops.add(Meta.addMeta(stack));
-            }
+                drops.add(Meta.addMeta(new Potion(PotionType.POISON, 2).toItemStack(1)));
 
             return drops;
         }, true);

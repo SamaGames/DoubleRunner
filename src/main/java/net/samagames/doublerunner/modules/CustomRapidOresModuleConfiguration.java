@@ -82,13 +82,12 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
                     return new Potion(PotionType.NIGHT_VISION).extend().toItemStack(1);
                 else
                 {
-                    Potion potion = new Potion(PotionType.WATER, 1).extend().splash();
+                    Potion potion = new Potion(PotionType.POISON, 1).extend().splash();
                     ItemStack stack = potion.toItemStack(1);
 
                     PotionMeta meta = (PotionMeta) stack.getItemMeta();
-                    meta.setMainEffect(PotionEffectType.POISON);
                     meta.clearCustomEffects();
-                    meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 10, 0), true);
+                    meta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 8 * 20, 0), true);
 
                     stack.setItemMeta(meta);
 

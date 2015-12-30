@@ -45,7 +45,7 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
             @Override
             public int getExperienceModifier(Random random)
             {
-                return MathHelper.nextInt(random, 3, 6);
+                return MathHelper.nextInt(random, 5, 7);
             }
         }, true);
 
@@ -60,7 +60,7 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
             @Override
             public int getExperienceModifier(Random random)
             {
-                return MathHelper.nextInt(random, 5, 7);
+                return MathHelper.nextInt(random, 7, 9);
             }
         }, true);
 
@@ -88,7 +88,7 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
             @Override
             public int getExperienceModifier(Random random)
             {
-                return MathHelper.nextInt(random, 3, 6);
+                return MathHelper.nextInt(random, 5, 7);
             }
         }, true);
     }

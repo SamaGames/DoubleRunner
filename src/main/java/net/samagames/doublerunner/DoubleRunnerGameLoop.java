@@ -80,6 +80,13 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
         this.fallDamages = true;
     }
 
+    @Override
+    public void createEndEvent()
+    {
+        super.createEndEvent();
+        this.nextEvent = this.nextEvent.copy(4, 0);
+    }
+
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event)
     {

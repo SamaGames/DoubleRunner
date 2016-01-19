@@ -11,6 +11,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PotionSplashEvent;
 import org.bukkit.event.inventory.*;
@@ -74,10 +75,13 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     @Override
     public void createReducingEvent()
     {
-        super.createReducingEvent();
-        this.nextEvent = this.nextEvent.copy(5, 30);
-
         this.fallDamages = true;
+
+        this.nextEvent = new TimedEvent(5, 30, "Fin de la réduction", ChatColor.RED, false, () ->
+        {
+            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("La map est désormais réduite. Fin de la partie forcée dans 4 minutes !", true);
+            this.createEndEvent();
+        });
     }
 
     @Override
@@ -119,6 +123,21 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
 
             event.getInventory().setResult(pickaxe);
         }
+    }
+
+    @EventHandler
+    public void onEnchantItem(EnchantItemEvent event)
+    {
+        if (event.getItem().getType() == Material.LEATHER_BOOTS || event.getItem().getType() == Material.IRON_BOOTS || event.getItem().getType() == Material.CHAINMAIL_BOOTS || event.getItem().getType() == Material.GOLD_BOOTS || event.getItem().getType() == Material.DIAMOND_BOOTS)
+            event.getItem().addEnchantment(Enchantment.DEPTH_STRIDER, 2);
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event)
+    {
+        if (event.getClickedInventory() != null && event.getClickedInventory().getType() == InventoryType.ENCHANTING && event.getSlot() == 0)
+            if (event.getCurrentItem().getType() == Material.LEATHER_BOOTS || event.getCurrentItem().getType() == Material.IRON_BOOTS || event.getCurrentItem().getType() == Material.CHAINMAIL_BOOTS || event.getCurrentItem().getType() == Material.GOLD_BOOTS || event.getCurrentItem().getType() == Material.DIAMOND_BOOTS)
+                event.getCurrentItem().removeEnchantment(Enchantment.DEPTH_STRIDER);
     }
 
     @EventHandler

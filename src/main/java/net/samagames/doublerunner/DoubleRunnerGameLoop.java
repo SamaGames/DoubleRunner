@@ -77,9 +77,24 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     {
         this.fallDamages = true;
 
-        this.nextEvent = new TimedEvent(5, 30, "Fin de la réduction", ChatColor.RED, false, () ->
+        this.nextEvent = new TimedEvent(5, 30, "Seconde réduction", ChatColor.YELLOW, false, () ->
         {
-            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("La map est désormais réduite. Fin de la partie forcée dans 4 minutes !", true);
+            this.game.getWorldBorder().setSize(50.0D);
+
+            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("La map va désormais effectuer une seconde réduction pendant 8 minutes !", true);
+            this.createSecondReducingEvent();
+        });
+    }
+
+    public void createSecondReducingEvent()
+    {
+        this.game.getWorldBorder().setSize(8.0D, 8L * 60L);
+
+        this.nextEvent = new TimedEvent(8, 0, "Fin de la réduction", ChatColor.RED, false, () ->
+        {
+            this.game.getWorldBorder().setSize(8.0D);
+
+            this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("La map est désormais réduite. Fin de la partie forcée dans 2 minutes !", true);
             this.createEndEvent();
         });
     }
@@ -88,7 +103,7 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     public void createEndEvent()
     {
         super.createEndEvent();
-        this.nextEvent = this.nextEvent.copy(4, 0);
+        this.nextEvent = this.nextEvent.copy(2, 0);
     }
 
     @EventHandler

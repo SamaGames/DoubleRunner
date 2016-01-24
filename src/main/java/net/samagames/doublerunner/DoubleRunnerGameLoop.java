@@ -88,11 +88,11 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
 
     public void createSecondReducingEvent()
     {
-        this.game.getWorldBorder().setSize(8.0D, 8L * 60L);
+        this.game.getWorldBorder().setSize(16.0D, 6L * 60L);
 
         this.nextEvent = new TimedEvent(8, 0, "Fin de la réduction", ChatColor.RED, false, () ->
         {
-            this.game.getWorldBorder().setSize(8.0D);
+            this.game.getWorldBorder().setSize(16.0D);
 
             this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("La map est désormais réduite. Fin de la partie forcée dans 2 minutes !", true);
             this.createEndEvent();

@@ -134,6 +134,13 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
             pickaxe.addEnchantment(Enchantment.DIG_SPEED, 3);
 
             event.getInventory().setResult(pickaxe);
+
+            this.plugin.getServer().getScheduler().runTaskLater(this.plugin, () ->
+            {
+                for (ItemStack stack : event.getWhoClicked().getInventory().getContents())
+                    if (stack.getType() == Material.DIAMOND_PICKAXE && !stack.containsEnchantment(Enchantment.DIG_SPEED))
+                        stack.addEnchantment(Enchantment.DIG_SPEED, 3);
+            }, 5L);
         }
     }
 

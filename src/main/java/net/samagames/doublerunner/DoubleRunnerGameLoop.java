@@ -154,7 +154,7 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event)
     {
-        if (event.getClickedInventory() != null && event.getClickedInventory().getType() == InventoryType.ENCHANTING && event.getSlot() == 0)
+        if (event.getClickedInventory() != null && (event.getClickedInventory().getType() == InventoryType.ENCHANTING || event.getClickedInventory().getType() == InventoryType.ANVIL) && event.getSlot() == 0)
             if (event.getCurrentItem().getType() == Material.LEATHER_BOOTS || event.getCurrentItem().getType() == Material.IRON_BOOTS || event.getCurrentItem().getType() == Material.CHAINMAIL_BOOTS || event.getCurrentItem().getType() == Material.GOLD_BOOTS || event.getCurrentItem().getType() == Material.DIAMOND_BOOTS)
                 event.getCurrentItem().removeEnchantment(Enchantment.DEPTH_STRIDER);
     }

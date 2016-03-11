@@ -45,6 +45,7 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
             this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("Le map sera réduite dans 9 minutes. Le PvP sera activé à ce moment là.", true);
             this.game.enableDamages();
             this.createTeleportationEvent();
+            this.blocksProtected = false;
         });
     }
 

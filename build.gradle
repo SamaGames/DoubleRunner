@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'idea'
+apply plugin: 'sonar-runner'
 
 group = 'net.samagames'
 version = '1.0.0'
@@ -31,6 +32,17 @@ repositories {
             username sguser
             password sgpass
         }
+    }
+}
+
+sonarRunner {
+    sonarProperties {
+        property "sonar.host.url", "http://blackmesa.samagames.net:9494/"
+        property "sonar.projectKey", group + "." + archivesBaseName
+        property "sonar.projectName", archivesBaseName
+
+        property "sonar.login", sonaruser
+        property "sonar.password", sonarpass
     }
 }
 

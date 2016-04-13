@@ -59,7 +59,7 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
     @Override
     public void createDeathmatchEvent()
     {
-        this.game.getWorldBorder().setSize(50.0D, 6L * 60L);
+        this.game.setWorldBorderSize(50.0D, 6L * 60L);
 
         this.nextEvent = new TimedEvent(0, 30, "PvP activé", ChatColor.RED, false, () ->
         {
@@ -80,7 +80,7 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
 
         this.nextEvent = new TimedEvent(5, 30, "Seconde réduction", ChatColor.YELLOW, false, () ->
         {
-            this.game.getWorldBorder().setSize(50.0D);
+            this.game.setWorldBorderSize(50.0D);
 
             this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("La map va désormais effectuer une seconde réduction pendant 8 minutes !", true);
             this.createSecondReducingEvent();
@@ -89,11 +89,11 @@ public class DoubleRunnerGameLoop extends RunBasedGameLoop implements Listener
 
     public void createSecondReducingEvent()
     {
-        this.game.getWorldBorder().setSize(16.0D, 6L * 60L);
+        this.game.setWorldBorderSize(16.0D, 6L * 60L);
 
         this.nextEvent = new TimedEvent(8, 0, "Fin de la réduction", ChatColor.RED, false, () ->
         {
-            this.game.getWorldBorder().setSize(16.0D);
+            this.game.setWorldBorderSize(16.0D);
 
             this.game.getCoherenceMachine().getMessageManager().writeCustomMessage("La map est désormais réduite. Fin de la partie forcée dans 2 minutes !", true);
             this.createEndEvent();

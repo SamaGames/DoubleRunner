@@ -84,7 +84,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.RABBIT).map(stack -> new ItemStack(Material.COOKED_RABBIT, stack.getAmount() * 2)).collect(Collectors.toList());
 
             if (random.nextInt(100) < 30)
-                newDrops.add(Meta.addMeta(new Potion(PotionType.JUMP, 2).extend().toItemStack(1)));
+                newDrops.add(Meta.addMeta(new Potion(PotionType.JUMP, 1).extend().toItemStack(1)));
 
             return newDrops;
         }, true);

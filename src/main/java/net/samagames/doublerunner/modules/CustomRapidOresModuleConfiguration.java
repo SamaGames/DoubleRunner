@@ -2,11 +2,9 @@ package net.samagames.doublerunner.modules;
 
 import net.minecraft.server.v1_9_R1.MathHelper;
 import net.samagames.survivalapi.modules.block.RapidOresModule;
-import net.samagames.survivalapi.utils.Meta;
+import net.samagames.tools.MojangShitUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.potion.*;
 
 import java.util.Random;
 
@@ -69,17 +67,17 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
                 int randomized = random.nextInt(100);
 
                 if (randomized < 25)
-                    return createPotion(PotionType.STRENGTH);
+                    return MojangShitUtils.getPotion("long_strength");
                 else if (randomized < 40)
-                    return createPotion(PotionType.SPEED);
+                    return MojangShitUtils.getPotion("long_swiftness");
                 else if (randomized < 55)
-                    return createPotion(PotionType.FIRE_RESISTANCE);
+                    return MojangShitUtils.getPotion("long_fire_resistance");
                 else if (randomized < 70)
-                    return createPotion(PotionType.JUMP);
+                    return MojangShitUtils.getPotion("long_leaping");
                 else if (randomized < 85)
-                    return createPotion(PotionType.NIGHT_VISION);
+                    return MojangShitUtils.getPotion("long_night_vision");
                 else
-                    return createPotion(PotionType.POISON);
+                    return MojangShitUtils.getPotion("long_poison");
             }
 
             @Override
@@ -88,15 +86,5 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
                 return MathHelper.nextInt(random, 5, 7);
             }
         }, true);
-    }
-
-    private ItemStack createPotion(PotionType potionType)
-    {
-        ItemStack potion = new ItemStack(Material.POTION, 1);
-        PotionMeta meta = (PotionMeta) potion.getItemMeta();
-        meta.setBasePotionData(new PotionData(potionType, true, false));
-        potion.setItemMeta(meta);
-
-        return potion;
     }
 }

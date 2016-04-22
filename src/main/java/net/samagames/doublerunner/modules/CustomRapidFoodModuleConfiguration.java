@@ -2,6 +2,7 @@ package net.samagames.doublerunner.modules;
 
 import net.samagames.survivalapi.modules.gameplay.RapidFoodModule;
 import net.samagames.survivalapi.utils.Meta;
+import net.samagames.tools.MojangShitUtils;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
@@ -84,7 +85,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.RABBIT).map(stack -> new ItemStack(Material.COOKED_RABBIT, stack.getAmount() * 2)).collect(Collectors.toList());
 
             if (random.nextInt(100) < 30)
-                newDrops.add(Meta.addMeta(new Potion(PotionType.JUMP, 1).extend().toItemStack(1)));
+                newDrops.add(Meta.addMeta(MojangShitUtils.getPotion("long_swiftness")));
 
             return newDrops;
         }, true);
@@ -95,7 +96,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             newDrops.add(new ItemStack(Material.COOKED_MUTTON, random.nextInt(2) + 1));
 
             if (random.nextInt(100) < 15)
-                newDrops.add(Meta.addMeta(new Potion(PotionType.NIGHT_VISION).extend().toItemStack(1)));
+                newDrops.add(Meta.addMeta(MojangShitUtils.getPotion("long_night_vision")));
 
             return newDrops;
         }, true);
@@ -118,7 +119,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
         this.addDrop(EntityType.SPIDER, (drops, random) ->
         {
             if (random.nextInt(100) < 15)
-                drops.add(Meta.addMeta(new Potion(PotionType.POISON).splash().toItemStack(1)));
+                drops.add(Meta.addMeta(MojangShitUtils.getPotion("long_poison")));
 
             return drops;
         }, true);
@@ -128,7 +129,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.ROTTEN_FLESH).map(stack -> new ItemStack(Material.COOKED_BEEF, stack.getAmount() * 2)).collect(Collectors.toList());
 
             if (random.nextInt(100) < 15)
-                newDrops.add(Meta.addMeta(new Potion(PotionType.STRENGTH).extend().toItemStack(1)));
+                newDrops.add(Meta.addMeta(MojangShitUtils.getPotion("long_strength")));
 
             return newDrops;
         }, true);

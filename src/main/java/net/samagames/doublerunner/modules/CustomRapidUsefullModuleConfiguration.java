@@ -2,6 +2,7 @@ package net.samagames.doublerunner.modules;
 
 import net.samagames.survivalapi.modules.gameplay.RapidUsefullModule;
 import net.samagames.survivalapi.utils.Meta;
+import net.samagames.tools.MojangShitUtils;
 import org.bukkit.Material;
 import org.bukkit.TreeSpecies;
 import org.bukkit.inventory.ItemStack;
@@ -23,7 +24,7 @@ public class CustomRapidUsefullModuleConfiguration extends RapidUsefullModule.Co
             if (randomized < 5)
                 return new ItemStack(Material.ENCHANTMENT_TABLE, 1);
             else if (randomized < 25)
-                return Meta.addMeta(new Potion(PotionType.SPEED).extend().toItemStack(1));
+                return Meta.addMeta(MojangShitUtils.getPotion("long_swiftness"));
             else
                 return new ItemStack(Material.BOOK, 1);
         }, true);

@@ -85,7 +85,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.RABBIT).map(stack -> new ItemStack(Material.COOKED_RABBIT, stack.getAmount() * 2)).collect(Collectors.toList());
 
             if (random.nextInt(100) < 30)
-                newDrops.add(Meta.addMeta(MojangShitUtils.getPotion("long_swiftness")));
+                newDrops.add(Meta.addMeta(MojangShitUtils.getPotion("long_swiftness", false, false)));
 
             return newDrops;
         }, true);
@@ -96,7 +96,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             newDrops.add(new ItemStack(Material.COOKED_MUTTON, random.nextInt(2) + 1));
 
             if (random.nextInt(100) < 15)
-                newDrops.add(Meta.addMeta(MojangShitUtils.getPotion("long_night_vision")));
+                newDrops.add(Meta.addMeta(MojangShitUtils.getPotion("long_night_vision", false, false)));
 
             return newDrops;
         }, true);
@@ -119,7 +119,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
         this.addDrop(EntityType.SPIDER, (drops, random) ->
         {
             if (random.nextInt(100) < 15)
-                drops.add(Meta.addMeta(MojangShitUtils.getPotion("long_poison")));
+                drops.add(Meta.addMeta(MojangShitUtils.getPotion("long_poison", true, false)));
 
             return drops;
         }, true);
@@ -129,7 +129,7 @@ public class CustomRapidFoodModuleConfiguration extends RapidFoodModule.Configur
             List<ItemStack> newDrops = drops.stream().filter(stack -> stack.getType() == Material.ROTTEN_FLESH).map(stack -> new ItemStack(Material.COOKED_BEEF, stack.getAmount() * 2)).collect(Collectors.toList());
 
             if (random.nextInt(100) < 15)
-                newDrops.add(Meta.addMeta(MojangShitUtils.getPotion("long_strength")));
+                newDrops.add(Meta.addMeta(MojangShitUtils.getPotion("long_strength", false, false)));
 
             return newDrops;
         }, true);

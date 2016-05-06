@@ -24,7 +24,7 @@ public class CustomRapidUsefullModuleConfiguration extends RapidUsefullModule.Co
             if (randomized < 5)
                 return new ItemStack(Material.ENCHANTMENT_TABLE, 1);
             else if (randomized < 25)
-                return Meta.addMeta(MojangShitUtils.getPotion("long_swiftness"));
+                return Meta.addMeta(MojangShitUtils.getPotion("long_swiftness", false, false));
             else
                 return new ItemStack(Material.BOOK, 1);
         }, true);

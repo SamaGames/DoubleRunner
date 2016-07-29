@@ -6,7 +6,7 @@ import net.samagames.survivalapi.game.SurvivalGameStatisticsHelper;
 import java.util.UUID;
 
 /**
- *               )\._.,--....,'``.
+ *                )\._.,--....,'``.
  * .b--.        /;   _.. \   _\  (`._ ,.
  * `=,-,-'~~~   `----(,_..'--(,_..'`-.;.'
  *

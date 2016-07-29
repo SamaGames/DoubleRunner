@@ -69,6 +69,7 @@ public class DoubleRunner extends JavaPlugin
         SurvivalAPI.get().unloadModule(RandomChestModule.class);
 
         SamaGamesAPI.get().getGameManager().setMaxReconnectTime(10);
+        SamaGamesAPI.get().getGameManager().setGameStatisticsHelper(new DoubleRunnerStatisticsHelper());
         SamaGamesAPI.get().getGameManager().registerGame(game);
     }
 }

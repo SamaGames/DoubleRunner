@@ -2,6 +2,7 @@ package net.samagames.doublerunner;
 
 import com.google.gson.JsonPrimitive;
 import net.samagames.api.SamaGamesAPI;
+import net.samagames.api.games.GamesNames;
 import net.samagames.doublerunner.modules.CustomRapidFoodModuleConfiguration;
 import net.samagames.doublerunner.modules.CustomRapidOresModuleConfiguration;
 import net.samagames.doublerunner.modules.CustomRapidUsefullModuleConfiguration;
@@ -69,6 +70,8 @@ public class DoubleRunner extends JavaPlugin
         SurvivalAPI.get().unloadModule(RandomChestModule.class);
 
         SamaGamesAPI.get().getGameManager().setMaxReconnectTime(10);
+        SamaGamesAPI.get().getStatsManager().setStatsToLoad(GamesNames.DOUBLERUNNER, true);
+        SamaGamesAPI.get().getShopsManager().setShopToLoad(GamesNames.DOUBLERUNNER, true);
         SamaGamesAPI.get().getGameManager().setGameStatisticsHelper(new DoubleRunnerStatisticsHelper());
         SamaGamesAPI.get().getGameManager().registerGame(game);
     }

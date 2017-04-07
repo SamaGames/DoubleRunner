@@ -15,7 +15,6 @@ import net.samagames.survivalapi.modules.block.RandomChestModule;
 import net.samagames.survivalapi.modules.block.RapidOresModule;
 import net.samagames.survivalapi.modules.block.TorchThanCoalModule;
 import net.samagames.survivalapi.modules.block.WorldDropModule;
-import net.samagames.survivalapi.modules.craft.OneShieldModule;
 import net.samagames.survivalapi.modules.craft.RapidToolsModule;
 import net.samagames.survivalapi.modules.gameplay.*;
 import org.bukkit.ChatColor;
@@ -58,7 +57,6 @@ public class DoubleRunner extends JavaPlugin
         SurvivalAPI.get().loadModule(ConstantPotionModule.class, constantPotionConfiguration.build());
         SurvivalAPI.get().loadModule(OneShootPassiveModule.class, null);
         SurvivalAPI.get().loadModule(AutomaticLapisModule.class, null);
-        SurvivalAPI.get().loadModule(OneShieldModule.class, null);
 
         int nb = SamaGamesAPI.get().getGameManager().getGameProperties().getOption("playersPerTeam", new JsonPrimitive(1)).getAsInt();
 

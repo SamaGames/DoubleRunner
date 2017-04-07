@@ -1,6 +1,6 @@
 package net.samagames.doublerunner.modules;
 
-import net.minecraft.server.v1_10_R1.MathHelper;
+import net.minecraft.server.v1_8_R3.MathHelper;
 import net.samagames.survivalapi.modules.block.RapidOresModule;
 import net.samagames.tools.MojangShitUtils;
 import org.bukkit.Material;

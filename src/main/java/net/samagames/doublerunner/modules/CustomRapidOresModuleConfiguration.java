@@ -67,17 +67,17 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
                 int randomized = random.nextInt(100);
 
                 if (randomized < 25)
-                    return MojangShitUtils.getPotion("long_strength", false, false);
+                    return MojangShitUtils.getPotion("long_strength", false);
                 else if (randomized < 40)
-                    return MojangShitUtils.getPotion("long_swiftness", false, false);
+                    return MojangShitUtils.getPotion("long_swiftness", false);
                 else if (randomized < 55)
-                    return MojangShitUtils.getPotion("long_fire_resistance", false, false);
+                    return MojangShitUtils.getPotion("long_fire_resistance", false);
                 else if (randomized < 70)
-                    return MojangShitUtils.getPotion("long_leaping", false, false);
+                    return MojangShitUtils.getPotion("long_leaping", false);
                 else if (randomized < 85)
-                    return MojangShitUtils.getPotion("long_night_vision", false, false);
+                    return MojangShitUtils.getPotion("long_night_vision", false);
                 else
-                    return MojangShitUtils.getPotion("long_poison", true, false);
+                    return MojangShitUtils.getPotion("long_poison", true);
             }
 
             @Override

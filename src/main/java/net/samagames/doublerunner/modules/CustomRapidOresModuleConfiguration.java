@@ -5,6 +5,9 @@ import net.samagames.survivalapi.modules.block.RapidOresModule;
 import net.samagames.tools.MojangShitUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 
 import java.util.Random;
 
@@ -67,17 +70,17 @@ public class CustomRapidOresModuleConfiguration extends RapidOresModule.Configur
                 int randomized = random.nextInt(100);
 
                 if (randomized < 25)
-                    return MojangShitUtils.getPotion("long_strength", false);
+                    return MojangShitUtils.getPotionLegacy(PotionType.STRENGTH, 1, true, false);
                 else if (randomized < 40)
-                    return MojangShitUtils.getPotion("long_swiftness", false);
+                    return MojangShitUtils.getPotionLegacy(PotionType.SPEED, 1, true, false);
                 else if (randomized < 55)
-                    return MojangShitUtils.getPotion("long_fire_resistance", false);
+                    return MojangShitUtils.getPotionLegacy(PotionType.FIRE_RESISTANCE, 1, true, false);
                 else if (randomized < 70)
-                    return MojangShitUtils.getPotion("long_leaping", false);
+                    return MojangShitUtils.getPotionLegacy(PotionType.INVISIBILITY, 1, true, false);
                 else if (randomized < 85)
-                    return MojangShitUtils.getPotion("long_night_vision", false);
+                    return MojangShitUtils.getPotionLegacy(PotionType.NIGHT_VISION, 1, true, false);
                 else
-                    return MojangShitUtils.getPotion("long_poison", true);
+                    return MojangShitUtils.getPotionLegacy(PotionType.POISON, 1, true, true);
             }
 
             @Override

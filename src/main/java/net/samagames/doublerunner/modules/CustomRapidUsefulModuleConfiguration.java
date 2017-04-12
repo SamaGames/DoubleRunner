@@ -1,19 +1,15 @@
 package net.samagames.doublerunner.modules;
 
-import net.samagames.survivalapi.modules.gameplay.RapidUsefullModule;
+import net.samagames.survivalapi.modules.gameplay.RapidUsefulModule;
 import net.samagames.survivalapi.utils.Meta;
 import net.samagames.tools.MojangShitUtils;
 import org.bukkit.Material;
-import org.bukkit.TreeSpecies;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.Tree;
-import org.bukkit.potion.Potion;
-import org.bukkit.potion.PotionType;
 
 
-public class CustomRapidUsefullModuleConfiguration extends RapidUsefullModule.ConfigurationBuilder
+public class CustomRapidUsefulModuleConfiguration extends RapidUsefulModule.ConfigurationBuilder
 {
-    public CustomRapidUsefullModuleConfiguration()
+    public CustomRapidUsefulModuleConfiguration()
     {
         this.addDefaults();
 

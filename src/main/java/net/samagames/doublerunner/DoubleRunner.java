@@ -5,7 +5,7 @@ import net.samagames.api.SamaGamesAPI;
 import net.samagames.api.games.GamesNames;
 import net.samagames.doublerunner.modules.CustomRapidFoodModuleConfiguration;
 import net.samagames.doublerunner.modules.CustomRapidOresModuleConfiguration;
-import net.samagames.doublerunner.modules.CustomRapidUsefullModuleConfiguration;
+import net.samagames.doublerunner.modules.CustomRapidUsefulModuleConfiguration;
 import net.samagames.survivalapi.modules.combat.OneShootPassiveModule;
 import net.samagames.survivalapi.SurvivalAPI;
 import net.samagames.survivalapi.game.SurvivalGame;
@@ -32,7 +32,7 @@ public class DoubleRunner extends JavaPlugin
 
         SurvivalAPI.get().loadModule(RapidOresModule.class, new CustomRapidOresModuleConfiguration().build());
         SurvivalAPI.get().loadModule(RapidFoodModule.class, new CustomRapidFoodModuleConfiguration().build());
-        SurvivalAPI.get().loadModule(RapidUsefullModule.class, new CustomRapidUsefullModuleConfiguration().build());
+        SurvivalAPI.get().loadModule(RapidUsefulModule.class, new CustomRapidUsefulModuleConfiguration().build());
 
         RapidToolsModule.ConfigurationBuilder rapidToolsConfiguration = new RapidToolsModule.ConfigurationBuilder();
         rapidToolsConfiguration.setToolsMaterial(RapidToolsModule.ConfigurationBuilder.ToolMaterial.IRON);

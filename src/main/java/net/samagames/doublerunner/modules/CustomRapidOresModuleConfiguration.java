@@ -5,8 +5,6 @@ import net.samagames.survivalapi.modules.block.RapidOresModule;
 import net.samagames.tools.MojangShitUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
 import java.util.Random;

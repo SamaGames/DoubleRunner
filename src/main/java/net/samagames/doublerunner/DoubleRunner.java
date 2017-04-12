@@ -58,7 +58,7 @@ public class DoubleRunner extends JavaPlugin
         SurvivalAPI.get().loadModule(OneShootPassiveModule.class, null);
         SurvivalAPI.get().loadModule(AutomaticLapisModule.class, null);
 
-        int nb = SamaGamesAPI.get().getGameManager().getGameProperties().getOption("playersPerTeam", new JsonPrimitive(1)).getAsInt();
+        int nb = SamaGamesAPI.get().getGameManager().getGameProperties().getGameOption("playersPerTeam", new JsonPrimitive(1)).getAsInt();
 
         if (nb > 1)
             game = new RunBasedTeamGame<>(this, "doublerunner", "DoubleRunner", "Un Repas, un Café, un DoubleRunner !", ChatColor.DARK_PURPLE + "☕", DoubleRunnerGameLoop.class, nb);
